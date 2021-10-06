@@ -1,0 +1,32 @@
+pipeline {
+    agent any
+    parameters {
+        string(name: 'VM', defaultValue: 'VM-ONE', description: 'My VM name created over this job')
+        }
+
+    stages {
+        stage('Build') {
+            input {
+                message "Should we continue?"
+                ok "Yes, we should."
+                 parameters {
+                   string(name: 'VM', defaultValue: 'VM-ONE', description: 'My VM name created over this job')
+                  }
+                }
+            steps {
+                echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
+                echo "This is  ${params.VM}"
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing..'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying....'
+            }
+        }
+    }
+}
