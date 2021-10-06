@@ -2,6 +2,11 @@ provider {
   region = "us-east-1"
 }
 
+variable "instance_name"{
+  type = string
+  default = " "
+}
+
 resource "aws_key_pair" "terraform-demo" {
   key_name   = "terraform-demo"
   public_key = "${file("~/.ssh/id_rsa.pub")}"
@@ -14,7 +19,7 @@ resource "aws_instance" "my-instance" {
   key_name      = "${aws_key_pair.terraform-demo.key_name}"
 
   tags = {
-    Name  = "sample_one"
+    Name  = var.instance_name
   }
 }
 
