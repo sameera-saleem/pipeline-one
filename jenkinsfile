@@ -17,15 +17,20 @@ pipeline {
                 echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
                 echo "This is  ${params.VM}"
             }
-        }
-        stage('Test') {
             steps {
-                echo 'Testing..'
+                sh "terraform init"
             }
         }
-        stage('Deploy') {
+        stage('plan') {
+            steps {
+                echo 'planning..'
+                sh "terraform plan"
+            }
+        }
+        stage('apply') {
             steps {
                 echo 'Deploying....'
+                sh "terraform apply -auto-approve"
             }
         }
     }
