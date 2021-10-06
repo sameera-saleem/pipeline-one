@@ -2,15 +2,7 @@ pipeline {
     agent any
      stages {
         stage('Build') {
-            input {
-                message "Should we continue?"
-                ok "Yes, we should."
-                 parameters {
-                   string(name: 'VM', defaultValue: 'VM-ONE', description: 'My VM name created over this job')
-                  }
-                }
-            steps {
-             echo "This is  ${params.VM}"
+               echo 'initializing'
              sh "terraform init"
             }
         }
