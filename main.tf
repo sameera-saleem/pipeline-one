@@ -11,7 +11,7 @@ variable "instance_name"{
 resource "aws_instance" "my-instance" {
   count         = 1
   ami           = "ami-5b41123e"
-  instance_type = var.instance_type
+  instance_type = "t2.micro"
 
   tags = {
     Name  = var.instance_name
