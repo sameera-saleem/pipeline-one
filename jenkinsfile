@@ -10,10 +10,8 @@ pipeline {
                   }
                 }
             steps {
-                echo "This is  ${params.VM}"
-            }
-            steps {
-                sh "terraform init"
+             echo "This is  ${params.VM}"
+             sh "terraform init"
             }
         }
         stage('plan') {
