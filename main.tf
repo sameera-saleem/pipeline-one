@@ -5,7 +5,7 @@ provider "aws" {
 
 variable "instance_name"{
   type = string
-  default = " "
+  default = "vmname_u20"
 }
 
 resource "aws_instance" "my-instance" {
