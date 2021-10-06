@@ -1,10 +1,6 @@
 pipeline {
     agent any
-    parameters {
-        string(name: 'VM', defaultValue: 'VM-ONE', description: 'My VM name created over this job')
-        }
-
-    stages {
+     stages {
         stage('Build') {
             input {
                 message "Should we continue?"
@@ -14,7 +10,6 @@ pipeline {
                   }
                 }
             steps {
-                echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
                 echo "This is  ${params.VM}"
             }
             steps {
