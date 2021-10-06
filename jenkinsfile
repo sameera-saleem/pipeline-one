@@ -3,19 +3,16 @@ pipeline {
      stages {
         stage('Build') {
                echo 'initializing'
-             sh "terraform init"
             }
         }
         stage('plan') {
             steps {
                 echo 'planning..'
-                sh "terraform plan"
             }
         }
         stage('apply') {
             steps {
                 echo 'Deploying....'
-                sh "terraform apply -auto-approve"
             }
         }
     }
